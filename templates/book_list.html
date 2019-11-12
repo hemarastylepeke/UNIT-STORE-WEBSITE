@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<style>
+		table {
+			margin-top: 1em;
+  			font-family: arial, sans-serif;
+  			border-collapse: collapse;
+  			width: 100%;
+			}
+
+		td, th {
+  			border: 1px solid #dddddd;
+  			text-align: left;
+  			padding: 8px;
+			}
+
+		tr:nth-child(even) {
+  			background-color: #dddddd;
+			}
+		/* Formatting page numbering */
+		.pagination {
+    		text-align: center;
+    		margin-top: 1em;
+    		margin-bottom: 1em;
+			}
+
+		.pagination-number {
+    		padding: 0.5em 0.8em;
+    		border-radius: 2px;
+    		color: #fff;
+    		background-color: #6D85C7;
+			}
+
+		.pagination-number:hover, .pagination-current {
+    		background-color: #ce1b28;      
+			}
+
+		.pagination-action {
+    		margin: 0 0.1em;
+    		display: inline-block;
+    		padding: 0.5em 0.5em;
+    		color: #B9B9B9;
+    		font-size: 1.3em;
+			}
+
+		.pagination-action:hover, .pagination-previous, .pagination-next {
+    		color: #ce1b28;  
+			}
+		.no-unit{
+			text-align: center;
+			margin-top: 2em;
+			font-size: 1.3em;
+			background-color: #B9B9B9;
+			padding: 0.5em 0.5em;
+			margin-left: 5em;
+			margin-right: 5em;
+			border-radius: 5px;
+		}
+	</style>
+	<head>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+		{% if filtered_books %}
+			<table class="table mb-0">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Unit Title</th>
+						<th>Unit Code</th>
+						<th>Date Uploaded</th>
+						<th>Download</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for book in filtered_books %}
+						<tr>
+							<td>{{ book.numbering }}</td>
+							<td>{{ book.title|upper }}</td>
+							<td>{{ book.code }}</td>
+							<td>{{ book.date }}</td>
+							<td>
+								<a href="{{ book.pdf.url }}" class="button primary fit small" target="_blank">Downlaod</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<div class="no-unit">
+				<p>Ooops!</br> There are No Uploaded Units Yet!</p>
+			</div>
+		{% endif %}
+<!--------------------------------------->
+		<div class="pagination">
+    		
+        		{% if filtered_books.has_previous %}
+            		<a class="pagination-action" href="?page=1">
+            			<i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            		</a>
+            		<a class="pagination-action" href="?page={{ filtered_books.previous_page_number }}">
+            			<i class="fa fa-angle-left" aria-hiddden="true"></i>
+            		</a>
+        		{% endif %}
+
+        		{% for num in filtered_books.paginator.page_range %}
+
+    				{% if filtered_books.number == num %}
+    				<span class="pagination-number pagination-current">{{ num }}</span>
+    				{% elif num > filtered_books.number|add:'-3' and num < filtered_books.number|add:'3' %}
+    				<a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+    				{% endif %}
+
+  				{% endfor %}
+
+        		{% if filtered_books.has_next %}
+            		<a class="pagination-action" href="?page={{ filtered_books.next_page_number }}">
+            			<i class="fa fa-angle-right" aria-hidden="true"></i>
+            		</a>
+            		<a class="pagination-action" href="?page={{ filtered_books.paginator.num_pages }}">
+            			<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            		</a>
+        		{% endif %}
+    		
+		</div>
+	</body>
+{% endblock %}

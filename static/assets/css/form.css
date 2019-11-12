@@ -1,0 +1,39 @@
+
+/*General */
+body
+{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	background:url('images/sun-2297961_1920.jpg') no-repeat;
+  	background-size: cover;
+  	height:150%;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+    margin-top:30px;
+	margin-left: -260px;
+    border-radius: 7px;
+  
+}
+
+/*Styles for small screens*/
+
+@media  only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}
+

@@ -1,0 +1,65 @@
+{% load static %}
+<html>
+	<head>
+		<title>Unit Store</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+			<!-- Header -->
+			<header id="header">
+				<a href="{% url 'book_list' %}" class="logo">Unit Store</a>
+				
+				<nav>
+					<a href="{% url 'upload_book' %}" class="logo">Upload Unit</a>
+				</nav>
+			</header>
+		
+			{% block content %}
+			{% endblock content %}
+
+			<!--Footer-->
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3>ABOUT</h3>
+							<p>The website was designed by <a href="http://spas.ku.ac.ke/" target="_blank">MATHEMATICS AND COMPUTER SCIENCE STUDENTS</a> at Kenyatta University as an HCI Project. The project acts as an Online Unit Store where students can upload notes given by their teachers in class and any other academic document in pdf, powerpoint and word. This will help teachers evade Notes duplication as all these notes will be stored in a single web page. Papers can also be scanned in pdf format and then uploaded to the server for storage. Alongside are some recommended sites for Extra books.</p>
+						</section>
+						<section>
+							<h4>SPECIAL LINKS</h4>
+							<ul class="alt">
+								<li><a href="https://libgen.is/">Library Genesis.</a></li>
+								<li><a href="http://www.gutenberg.org/">Project Gutenberg.</a></li>
+								<li><a href="https://openlibrary.org/">Open Library</a></li>
+								<li><a href="https://archive.org/">Internet Archive</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>CONTACTS</h4>
+							<ul class="plain">
+								<li><a href="https://twitter.com/Malcom87795344" target="_blank"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="https://www.facebook.com/chrise.hemstone"><i class="icon fa-facebook" target="_blank">&nbsp;</i>Facebook</a></li>
+								<!--<li><a href="#"><i class="icon fa-github" target="_blank">&nbsp;</i>Github</a></li>-->
+							</ul>
+						</section>
+					</div>
+					<div class="copyright">
+						&copy; Kenyatta University <a href="https://unsplash.co">Spas</a>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
